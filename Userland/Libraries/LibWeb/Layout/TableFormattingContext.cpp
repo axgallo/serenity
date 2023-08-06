@@ -237,6 +237,14 @@ void TableFormattingContext::initialize_table_measures<TableFormattingContext::C
             m_columns[cell.column_index].max_size = max(m_columns[cell.column_index].max_size, cell.outer_max_width);
         }
     }
+    for (auto& cell : m_cells) {
+        if (m_columns[cell.column_index].min_size > 0) {
+            continue;
+        }
+        // The column has no cells beginning in it. Such tables are malformed, but they occur on the web.
+        m_columns[cell.column_index].min_size = max(m_columns[cell.column_index].min_size, cell.outer_min_width);
+        m_columns[cell.column_index].max_size = max(m_columns[cell.column_index].max_size, cell.outer_max_width);
+    }
 }
 
 template<class RowOrColumn>
