@@ -5,11 +5,6 @@ Viewport <#document> at (0,0) content-size 800x600 children: not-inline
         frag 0 from BlockContainer start: 0, length: 0, rect: [13,19 0x0]
       BlockContainer <button> at (13,19) content-size 0x0 inline-block [BFC] children: inline
         TextNode <#text>
-        TableWrapper <(anonymous)> (not painted) [BFC] children: not-inline
-          BlockContainer <(anonymous)> (not painted) table-box [TFC] children: not-inline
-            Box <(anonymous)> (not painted) table-row children: not-inline
-              BlockContainer <(anonymous)> (not painted) table-cell [BFC] children: not-inline
-                BlockContainer <(anonymous)> (not painted) inline-block [BFC] children: not-inline
 
 PaintableWithLines (Viewport<#document>) [0,0 800x600]
   PaintableWithLines (BlockContainer<HTML>) [0,0 800x600]
