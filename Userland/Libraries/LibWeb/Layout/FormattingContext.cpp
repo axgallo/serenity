@@ -7,6 +7,8 @@
 #include <LibWeb/Dump.h>
 #include <LibWeb/Layout/BlockFormattingContext.h>
 #include <LibWeb/Layout/Box.h>
+#include <LibWeb/Layout/ButtonBlockContainer.h>
+#include <LibWeb/Layout/ButtonFormattingContext.h>
 #include <LibWeb/Layout/FlexFormattingContext.h>
 #include <LibWeb/Layout/FormattingContext.h>
 #include <LibWeb/Layout/GridFormattingContext.h>
@@ -124,6 +126,9 @@ Optional<FormattingContext::Type> FormattingContext::formatting_context_type_cre
     if (is<SVGSVGBox>(box))
         return Type::SVG;
 
+    if (is<ButtonBlockContainer>(box))
+        return Type::Button;
+
     auto display = box.display();
 
     if (display.is_flex_inside())
@@ -191,6 +196,8 @@ OwnPtr<FormattingContext> FormattingContext::create_independent_formatting_conte
         return make<GridFormattingContext>(state, child_box, this);
     case Type::Table:
         return make<TableFormattingContext>(state, child_box, this);
+    case Type::Button:
+        return make<ButtonFormattingContext>(state, verify_cast<ButtonBlockContainer>(child_box), this);
     case Type::InternalReplaced:
         return make<ReplacedFormattingContext>(state, child_box);
     case Type::InternalDummy:

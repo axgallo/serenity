@@ -70,6 +70,8 @@ public:
 private:
     HTMLButtonElement(DOM::Document&, DOM::QualifiedName);
 
+    virtual JS::GCPtr<Layout::Node> create_layout_node(NonnullRefPtr<CSS::StyleProperties>) override;
+
     // ^DOM::Element
     virtual i32 default_tab_index_value() const override;
 };

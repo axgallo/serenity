@@ -7,6 +7,7 @@
 #include <AK/Debug.h>
 #include <LibWeb/Layout/AvailableSpace.h>
 #include <LibWeb/Layout/BlockContainer.h>
+#include <LibWeb/Layout/ButtonBlockContainer.h>
 #include <LibWeb/Layout/LayoutState.h>
 #include <LibWeb/Layout/TextNode.h>
 #include <LibWeb/Layout/Viewport.h>
@@ -315,7 +316,10 @@ void LayoutState::UsedValues::set_node(NodeWithStyleAndBoxModelMetrics& node, Us
     bool has_definite_max_height = is_definite_size(computed_values.max_height(), max_height, false);
 
     m_has_definite_width = is_definite_size(computed_values.width(), m_content_width, true);
+    auto m_content_height_saved = m_content_height;
     m_has_definite_height = is_definite_size(computed_values.height(), m_content_height, false);
+    if (is<Layout::ButtonBlockContainer>(node))
+        m_content_height = m_content_height_saved;
 
     if (m_has_definite_width) {
         if (has_definite_min_width)

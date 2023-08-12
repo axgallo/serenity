@@ -24,6 +24,7 @@ public:
         Grid,
         Table,
         SVG,
+        Button,
         InternalReplaced, // Internal hack formatting context for replaced elements. FIXME: Get rid of this.
         InternalDummy,    // Internal hack formatting context for unimplemented things. FIXME: Get rid of this.
     };

@@ -7,6 +7,7 @@
 #include <LibWeb/DOM/Document.h>
 #include <LibWeb/HTML/HTMLButtonElement.h>
 #include <LibWeb/HTML/HTMLFormElement.h>
+#include <LibWeb/Layout/ButtonBlockContainer.h>
 
 namespace Web::HTML {
 
@@ -47,6 +48,11 @@ HTMLButtonElement::HTMLButtonElement(DOM::Document& document, DOM::QualifiedName
             VERIFY_NOT_REACHED();
         }
     };
+}
+
+JS::GCPtr<Layout::Node> HTMLButtonElement::create_layout_node(NonnullRefPtr<CSS::StyleProperties> style)
+{
+    return heap().allocate_without_realm<Layout::ButtonBlockContainer>(document(), this, move(style));
 }
 
 HTMLButtonElement::~HTMLButtonElement() = default;

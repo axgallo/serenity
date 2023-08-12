@@ -404,7 +404,9 @@ set(SOURCES
     Layout/AudioBox.cpp
     Layout/AvailableSpace.cpp
     Layout/BlockContainer.cpp
+    Layout/ButtonBlockContainer.cpp
     Layout/BlockFormattingContext.cpp
+    Layout/ButtonFormattingContext.cpp
     Layout/Box.cpp
     Layout/BoxModelMetrics.cpp
     Layout/BreakNode.cpp
